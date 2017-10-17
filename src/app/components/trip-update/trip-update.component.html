@@ -1,0 +1,24 @@
+<div>
+  <h5>#{{counter}} TripUpdate: {{ model.id }}</h5>
+  <table class="table table-sm table-hover">
+    <thead>
+      <tr>
+        <th>Departure</th>
+        <th>Direction</th>
+        <th>Route</th>
+        <th>#</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let value of model.values" [ngSwitch]="value.trip.directionId">
+        <th scope="row">{{ value.stopTimeUpdate.arrival.time | date: 'HH:mm' }}</th>
+        <td *ngSwitchCase="0">Outbound</td>
+        <td *ngSwitchCase="1">Inbound</td>
+        <td>{{ value.trip.routeId }}</td>
+        <td>
+          <a class="blue-text"><i class="fa fa-user"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,23 @@
+<div>
+  <h5>#{{counter}} StopMonitoring: {{ model.id }}</h5>
+  <table class="table table-sm table-hover">
+    <thead>
+      <tr>
+        <th>Departure</th>
+        <th>Destination</th>
+        <th>Line</th>
+        <th>#</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let value of model.values">
+        <th scope="row">{{ value.MonitoredVehicleJourney.MonitoredCall.ExpectedDepartureTime |  date:'HH:mm' }}</th>
+        <td>{{ value.MonitoredVehicleJourney.DestinationName | uppercase}}</td>
+        <td>{{ value.MonitoredVehicleJourney.PublishedLineName | uppercase }}</td>
+        <td>
+          <a class="blue-text"><i class="fa fa-user"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
