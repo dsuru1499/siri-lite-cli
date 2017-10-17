@@ -13,6 +13,8 @@ import { createSelector } from 'reselect';
 })
 export class StopMonitoringComponent implements OnInit {
 
+  public static KEY = ' W0RTVV0gMTcvMTAvMTcgQ2l0eXdheSBhc3NvY2lhdGlvbiBkZSBtw6lkaW9jcmVzCg==';  
+  
   private model: any = {};
   private responseSubscription: Subscription;
   private timerSubscription: Subscription;
