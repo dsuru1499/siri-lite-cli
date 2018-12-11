@@ -29,6 +29,7 @@ export class StopPointsDiscoveryComponent implements OnInit {
   private map: L.Map;
   private markers: L.LayerGroup;
   private popups: L.LayerGroup;
+  private bounds: L.LatLngBounds;
 
   constructor(
     private application: ApplicationRef,
@@ -37,6 +38,7 @@ export class StopPointsDiscoveryComponent implements OnInit {
     private injector: Injector,
     private store: Store<reducers.State>) {
     this.response$ = this.store.select(reducers.sdResponse);
+
   }
 
   ngOnInit() {
@@ -62,16 +64,29 @@ export class StopPointsDiscoveryComponent implements OnInit {
 
   private load() {
     if (this.map.getZoom() >= StopPointsDiscoveryComponent.MAX_ZOOM) {
-      let bounds = this.map.getBounds();
-      let url = "http://127.0.0.1:8080/siri-lite/stop-points-discovery"
-        + "?" + StopPointsDiscoveryActions.LoadAction.UPPER_LEFT_LONGITUDE + '=' + bounds.getNorthWest().lng
-        + "&" + StopPointsDiscoveryActions.LoadAction.UPPER_LEFT_LATITUDE + '=' + bounds.getNorthWest().lat
-        + "&" + StopPointsDiscoveryActions.LoadAction.LOWER_RIGHT_LONGITUDE + '=' + bounds.getSouthEast().lng
-        + "&" + StopPointsDiscoveryActions.LoadAction.LOWER_RIGHT_LATITUDE + '=' + bounds.getSouthEast().lat;
-      this.store.dispatch(new StopPointsDiscoveryActions.LoadAction(url));
+      let bounds = this.map.getBounds();      
+      let count:number = this.markers.getLayers().length;
+      if ( !this.bounds || !this.bounds.contains(bounds) || count == 0) {
+        let dx: number = this.diff(bounds.getEast(), bounds.getWest());
+        let dy: number = this.diff(bounds.getNorth(), bounds.getSouth());
+        this.bounds = new L.LatLngBounds(new L.LatLng(bounds.getSouth() - dy, bounds.getWest() - dx),
+          new L.LatLng(bounds.getNorth() + dy, bounds.getEast() + dx));
+
+        let url = "http://127.0.0.1:8080/siri-lite/stop-points-discovery"
+          + "?" + StopPointsDiscoveryActions.LoadAction.UPPER_LEFT_LONGITUDE + '=' + this.bounds.getNorthWest().lng
+          + "&" + StopPointsDiscoveryActions.LoadAction.UPPER_LEFT_LATITUDE + '=' + this.bounds.getNorthWest().lat
+          + "&" + StopPointsDiscoveryActions.LoadAction.LOWER_RIGHT_LONGITUDE + '=' + this.bounds.getSouthEast().lng
+          + "&" + StopPointsDiscoveryActions.LoadAction.LOWER_RIGHT_LATITUDE + '=' + this.bounds.getSouthEast().lat;
+        this.store.dispatch(new StopPointsDiscoveryActions.LoadAction(url));
+      }
     } else {
       this.store.dispatch(new StopPointsDiscoveryActions.LoadFailureAction(null));
     }
+  }
+
+  public diff(a: number, b: number): number {
+    let result: number = (a * b > 0) ? Math.abs(b - a) : Math.abs(a) + Math.abs(b);
+    return result;
   }
 
   private update(model) {
