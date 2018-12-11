@@ -1,4 +1,5 @@
 import * as $protobuf from "protobufjs";
+import * as Long from 'long';
 
 /** Namespace transit_realtime. */
 export namespace transit_realtime {
@@ -59,7 +60,7 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.FeedMessage;
+        public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.FeedMessage;
 
         /**
          * Decodes a FeedMessage message from the specified reader or buffer, length delimited.
@@ -68,14 +69,14 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.FeedMessage;
+        public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.FeedMessage;
 
         /**
          * Verifies a FeedMessage message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
-        public static verify(message: { [k: string]: any }): (string|null);
+        public static verify(message: { [k: string]: any }): (string | null);
 
         /**
          * Creates a FeedMessage message from a plain object. Also converts values to their respective internal types.
@@ -109,7 +110,7 @@ export namespace transit_realtime {
         incrementality?: transit_realtime.FeedHeader.Incrementality;
 
         /** FeedHeader timestamp */
-        timestamp?: (number|Long);
+        timestamp?: (number | Long);
     }
 
     /** Represents a FeedHeader. */
@@ -128,7 +129,7 @@ export namespace transit_realtime {
         public incrementality: transit_realtime.FeedHeader.Incrementality;
 
         /** FeedHeader timestamp. */
-        public timestamp: (number|Long);
+        public timestamp: (number | Long);
 
         /**
          * Creates a new FeedHeader instance using the specified properties.
@@ -161,7 +162,7 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.FeedHeader;
+        public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.FeedHeader;
 
         /**
          * Decodes a FeedHeader message from the specified reader or buffer, length delimited.
@@ -170,14 +171,14 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.FeedHeader;
+        public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.FeedHeader;
 
         /**
          * Verifies a FeedHeader message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
-        public static verify(message: { [k: string]: any }): (string|null);
+        public static verify(message: { [k: string]: any }): (string | null);
 
         /**
          * Creates a FeedHeader message from a plain object. Also converts values to their respective internal types.
@@ -245,13 +246,13 @@ export namespace transit_realtime {
         public isDeleted: boolean;
 
         /** FeedEntity tripUpdate. */
-        public tripUpdate?: (transit_realtime.ITripUpdate|null);
+        public tripUpdate?: (transit_realtime.ITripUpdate | null);
 
         /** FeedEntity vehicle. */
-        public vehicle?: (transit_realtime.IVehiclePosition|null);
+        public vehicle?: (transit_realtime.IVehiclePosition | null);
 
         /** FeedEntity alert. */
-        public alert?: (transit_realtime.IAlert|null);
+        public alert?: (transit_realtime.IAlert | null);
 
         /**
          * Creates a new FeedEntity instance using the specified properties.
@@ -284,7 +285,7 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.FeedEntity;
+        public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.FeedEntity;
 
         /**
          * Decodes a FeedEntity message from the specified reader or buffer, length delimited.
@@ -293,14 +294,14 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.FeedEntity;
+        public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.FeedEntity;
 
         /**
          * Verifies a FeedEntity message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
-        public static verify(message: { [k: string]: any }): (string|null);
+        public static verify(message: { [k: string]: any }): (string | null);
 
         /**
          * Creates a FeedEntity message from a plain object. Also converts values to their respective internal types.
@@ -337,7 +338,7 @@ export namespace transit_realtime {
         stopTimeUpdate?: transit_realtime.TripUpdate.IStopTimeUpdate[];
 
         /** TripUpdate timestamp */
-        timestamp?: (number|Long);
+        timestamp?: (number | Long);
 
         /** TripUpdate delay */
         delay?: number;
@@ -356,13 +357,13 @@ export namespace transit_realtime {
         public trip: transit_realtime.ITripDescriptor;
 
         /** TripUpdate vehicle. */
-        public vehicle?: (transit_realtime.IVehicleDescriptor|null);
+        public vehicle?: (transit_realtime.IVehicleDescriptor | null);
 
         /** TripUpdate stopTimeUpdate. */
         public stopTimeUpdate: transit_realtime.TripUpdate.IStopTimeUpdate[];
 
         /** TripUpdate timestamp. */
-        public timestamp: (number|Long);
+        public timestamp: (number | Long);
 
         /** TripUpdate delay. */
         public delay: number;
@@ -398,7 +399,7 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.TripUpdate;
+        public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.TripUpdate;
 
         /**
          * Decodes a TripUpdate message from the specified reader or buffer, length delimited.
@@ -407,14 +408,14 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.TripUpdate;
+        public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.TripUpdate;
 
         /**
          * Verifies a TripUpdate message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
-        public static verify(message: { [k: string]: any }): (string|null);
+        public static verify(message: { [k: string]: any }): (string | null);
 
         /**
          * Creates a TripUpdate message from a plain object. Also converts values to their respective internal types.
@@ -447,7 +448,7 @@ export namespace transit_realtime {
             delay?: number;
 
             /** StopTimeEvent time */
-            time?: (number|Long);
+            time?: (number | Long);
 
             /** StopTimeEvent uncertainty */
             uncertainty?: number;
@@ -466,7 +467,7 @@ export namespace transit_realtime {
             public delay: number;
 
             /** StopTimeEvent time. */
-            public time: (number|Long);
+            public time: (number | Long);
 
             /** StopTimeEvent uncertainty. */
             public uncertainty: number;
@@ -502,7 +503,7 @@ export namespace transit_realtime {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.TripUpdate.StopTimeEvent;
+            public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.TripUpdate.StopTimeEvent;
 
             /**
              * Decodes a StopTimeEvent message from the specified reader or buffer, length delimited.
@@ -511,14 +512,14 @@ export namespace transit_realtime {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.TripUpdate.StopTimeEvent;
+            public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.TripUpdate.StopTimeEvent;
 
             /**
              * Verifies a StopTimeEvent message.
              * @param message Plain object to verify
              * @returns `null` if valid, otherwise the reason why it is not
              */
-            public static verify(message: { [k: string]: any }): (string|null);
+            public static verify(message: { [k: string]: any }): (string | null);
 
             /**
              * Creates a StopTimeEvent message from a plain object. Also converts values to their respective internal types.
@@ -577,10 +578,10 @@ export namespace transit_realtime {
             public stopId: string;
 
             /** StopTimeUpdate arrival. */
-            public arrival?: (transit_realtime.TripUpdate.IStopTimeEvent|null);
+            public arrival?: (transit_realtime.TripUpdate.IStopTimeEvent | null);
 
             /** StopTimeUpdate departure. */
-            public departure?: (transit_realtime.TripUpdate.IStopTimeEvent|null);
+            public departure?: (transit_realtime.TripUpdate.IStopTimeEvent | null);
 
             /** StopTimeUpdate scheduleRelationship. */
             public scheduleRelationship: transit_realtime.TripUpdate.StopTimeUpdate.ScheduleRelationship;
@@ -616,7 +617,7 @@ export namespace transit_realtime {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.TripUpdate.StopTimeUpdate;
+            public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.TripUpdate.StopTimeUpdate;
 
             /**
              * Decodes a StopTimeUpdate message from the specified reader or buffer, length delimited.
@@ -625,14 +626,14 @@ export namespace transit_realtime {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.TripUpdate.StopTimeUpdate;
+            public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.TripUpdate.StopTimeUpdate;
 
             /**
              * Verifies a StopTimeUpdate message.
              * @param message Plain object to verify
              * @returns `null` if valid, otherwise the reason why it is not
              */
-            public static verify(message: { [k: string]: any }): (string|null);
+            public static verify(message: { [k: string]: any }): (string | null);
 
             /**
              * Creates a StopTimeUpdate message from a plain object. Also converts values to their respective internal types.
@@ -689,7 +690,7 @@ export namespace transit_realtime {
         currentStatus?: transit_realtime.VehiclePosition.VehicleStopStatus;
 
         /** VehiclePosition timestamp */
-        timestamp?: (number|Long);
+        timestamp?: (number | Long);
 
         /** VehiclePosition congestionLevel */
         congestionLevel?: transit_realtime.VehiclePosition.CongestionLevel;
@@ -708,13 +709,13 @@ export namespace transit_realtime {
         constructor(properties?: transit_realtime.IVehiclePosition);
 
         /** VehiclePosition trip. */
-        public trip?: (transit_realtime.ITripDescriptor|null);
+        public trip?: (transit_realtime.ITripDescriptor | null);
 
         /** VehiclePosition vehicle. */
-        public vehicle?: (transit_realtime.IVehicleDescriptor|null);
+        public vehicle?: (transit_realtime.IVehicleDescriptor | null);
 
         /** VehiclePosition position. */
-        public position?: (transit_realtime.IPosition|null);
+        public position?: (transit_realtime.IPosition | null);
 
         /** VehiclePosition currentStopSequence. */
         public currentStopSequence: number;
@@ -726,7 +727,7 @@ export namespace transit_realtime {
         public currentStatus: transit_realtime.VehiclePosition.VehicleStopStatus;
 
         /** VehiclePosition timestamp. */
-        public timestamp: (number|Long);
+        public timestamp: (number | Long);
 
         /** VehiclePosition congestionLevel. */
         public congestionLevel: transit_realtime.VehiclePosition.CongestionLevel;
@@ -765,7 +766,7 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.VehiclePosition;
+        public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.VehiclePosition;
 
         /**
          * Decodes a VehiclePosition message from the specified reader or buffer, length delimited.
@@ -774,14 +775,14 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.VehiclePosition;
+        public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.VehiclePosition;
 
         /**
          * Verifies a VehiclePosition message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
-        public static verify(message: { [k: string]: any }): (string|null);
+        public static verify(message: { [k: string]: any }): (string | null);
 
         /**
          * Creates a VehiclePosition message from a plain object. Also converts values to their respective internal types.
@@ -882,13 +883,13 @@ export namespace transit_realtime {
         public effect: transit_realtime.Alert.Effect;
 
         /** Alert url. */
-        public url?: (transit_realtime.ITranslatedString|null);
+        public url?: (transit_realtime.ITranslatedString | null);
 
         /** Alert headerText. */
-        public headerText?: (transit_realtime.ITranslatedString|null);
+        public headerText?: (transit_realtime.ITranslatedString | null);
 
         /** Alert descriptionText. */
-        public descriptionText?: (transit_realtime.ITranslatedString|null);
+        public descriptionText?: (transit_realtime.ITranslatedString | null);
 
         /**
          * Creates a new Alert instance using the specified properties.
@@ -921,7 +922,7 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.Alert;
+        public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.Alert;
 
         /**
          * Decodes an Alert message from the specified reader or buffer, length delimited.
@@ -930,14 +931,14 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.Alert;
+        public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.Alert;
 
         /**
          * Verifies an Alert message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
-        public static verify(message: { [k: string]: any }): (string|null);
+        public static verify(message: { [k: string]: any }): (string | null);
 
         /**
          * Creates an Alert message from a plain object. Also converts values to their respective internal types.
@@ -997,10 +998,10 @@ export namespace transit_realtime {
     interface ITimeRange {
 
         /** TimeRange start */
-        start?: (number|Long);
+        start?: (number | Long);
 
         /** TimeRange end */
-        end?: (number|Long);
+        end?: (number | Long);
     }
 
     /** Represents a TimeRange. */
@@ -1013,10 +1014,10 @@ export namespace transit_realtime {
         constructor(properties?: transit_realtime.ITimeRange);
 
         /** TimeRange start. */
-        public start: (number|Long);
+        public start: (number | Long);
 
         /** TimeRange end. */
-        public end: (number|Long);
+        public end: (number | Long);
 
         /**
          * Creates a new TimeRange instance using the specified properties.
@@ -1049,7 +1050,7 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.TimeRange;
+        public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.TimeRange;
 
         /**
          * Decodes a TimeRange message from the specified reader or buffer, length delimited.
@@ -1058,14 +1059,14 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.TimeRange;
+        public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.TimeRange;
 
         /**
          * Verifies a TimeRange message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
-        public static verify(message: { [k: string]: any }): (string|null);
+        public static verify(message: { [k: string]: any }): (string | null);
 
         /**
          * Creates a TimeRange message from a plain object. Also converts values to their respective internal types.
@@ -1163,7 +1164,7 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.Position;
+        public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.Position;
 
         /**
          * Decodes a Position message from the specified reader or buffer, length delimited.
@@ -1172,14 +1173,14 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.Position;
+        public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.Position;
 
         /**
          * Verifies a Position message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
-        public static verify(message: { [k: string]: any }): (string|null);
+        public static verify(message: { [k: string]: any }): (string | null);
 
         /**
          * Creates a Position message from a plain object. Also converts values to their respective internal types.
@@ -1283,7 +1284,7 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.TripDescriptor;
+        public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.TripDescriptor;
 
         /**
          * Decodes a TripDescriptor message from the specified reader or buffer, length delimited.
@@ -1292,14 +1293,14 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.TripDescriptor;
+        public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.TripDescriptor;
 
         /**
          * Verifies a TripDescriptor message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
-        public static verify(message: { [k: string]: any }): (string|null);
+        public static verify(message: { [k: string]: any }): (string | null);
 
         /**
          * Creates a TripDescriptor message from a plain object. Also converts values to their respective internal types.
@@ -1396,7 +1397,7 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.VehicleDescriptor;
+        public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.VehicleDescriptor;
 
         /**
          * Decodes a VehicleDescriptor message from the specified reader or buffer, length delimited.
@@ -1405,14 +1406,14 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.VehicleDescriptor;
+        public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.VehicleDescriptor;
 
         /**
          * Verifies a VehicleDescriptor message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
-        public static verify(message: { [k: string]: any }): (string|null);
+        public static verify(message: { [k: string]: any }): (string | null);
 
         /**
          * Creates a VehicleDescriptor message from a plain object. Also converts values to their respective internal types.
@@ -1474,7 +1475,7 @@ export namespace transit_realtime {
         public routeType: number;
 
         /** EntitySelector trip. */
-        public trip?: (transit_realtime.ITripDescriptor|null);
+        public trip?: (transit_realtime.ITripDescriptor | null);
 
         /** EntitySelector stopId. */
         public stopId: string;
@@ -1510,7 +1511,7 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.EntitySelector;
+        public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.EntitySelector;
 
         /**
          * Decodes an EntitySelector message from the specified reader or buffer, length delimited.
@@ -1519,14 +1520,14 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.EntitySelector;
+        public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.EntitySelector;
 
         /**
          * Verifies an EntitySelector message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
-        public static verify(message: { [k: string]: any }): (string|null);
+        public static verify(message: { [k: string]: any }): (string | null);
 
         /**
          * Creates an EntitySelector message from a plain object. Also converts values to their respective internal types.
@@ -1600,7 +1601,7 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.TranslatedString;
+        public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.TranslatedString;
 
         /**
          * Decodes a TranslatedString message from the specified reader or buffer, length delimited.
@@ -1609,14 +1610,14 @@ export namespace transit_realtime {
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.TranslatedString;
+        public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.TranslatedString;
 
         /**
          * Verifies a TranslatedString message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
-        public static verify(message: { [k: string]: any }): (string|null);
+        public static verify(message: { [k: string]: any }): (string | null);
 
         /**
          * Creates a TranslatedString message from a plain object. Also converts values to their respective internal types.
@@ -1698,7 +1699,7 @@ export namespace transit_realtime {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): transit_realtime.TranslatedString.Translation;
+            public static decode(reader: ($protobuf.Reader | Uint8Array), length?: number): transit_realtime.TranslatedString.Translation;
 
             /**
              * Decodes a Translation message from the specified reader or buffer, length delimited.
@@ -1707,14 +1708,14 @@ export namespace transit_realtime {
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): transit_realtime.TranslatedString.Translation;
+            public static decodeDelimited(reader: ($protobuf.Reader | Uint8Array)): transit_realtime.TranslatedString.Translation;
 
             /**
              * Verifies a Translation message.
              * @param message Plain object to verify
              * @returns `null` if valid, otherwise the reason why it is not
              */
-            public static verify(message: { [k: string]: any }): (string|null);
+            public static verify(message: { [k: string]: any }): (string | null);
 
             /**
              * Creates a Translation message from a plain object. Also converts values to their respective internal types.

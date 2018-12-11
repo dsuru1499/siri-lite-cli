@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+// import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 import { AppComponent } from './app.component';
 import { reducer } from './reducers';
@@ -31,14 +31,11 @@ import { TripUpdateComponent } from './components/trip-update/trip-update.compon
   ],
   imports: [
     BrowserModule,
-    StoreModule.provideStore(reducer),
-    EffectsModule.run(StopPointsDiscoveryEffects),
-    EffectsModule.run(TripUpdateEffects),
-    EffectsModule.run(StopMonitoringEffects),
+    StoreModule.forRoot(reducer),
+    EffectsModule.forRoot([StopPointsDiscoveryEffects, TripUpdateEffects,StopMonitoringEffects ]),
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
-    AngularFontAwesomeModule
+    HttpModule
   ],
 
   entryComponents: [AppComponent, StopPointsDiscoveryComponent, StopMonitoringComponent, TripUpdateComponent],
