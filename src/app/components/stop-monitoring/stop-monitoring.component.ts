@@ -52,7 +52,7 @@ export class StopMonitoringComponent implements OnInit {
 
   private load() {
     this.counter++;
-    let url = "http://127.0.0.1:8080/siri-lite/stop-monitoring"
+    let url = "/siri-lite/stop-monitoring"
       + "?" + StopMonitoringActions.LoadAction.MONITORING_REF + '=' + this.name
       + "&" + StopMonitoringActions.LoadAction.MAXIMUM_STOP_VISITS + '=' + 10;
     this.store.dispatch(new StopMonitoringActions.LoadAction(this.name, url));

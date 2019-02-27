@@ -1,4 +1,9 @@
 # Siri Demo
+Demo OpenShift (Redhat Kubernetes) 
+
+http://siri-demo-siri-demo.7e14.starter-us-west-2.openshiftapps.com/siri-cli/index.html
+
+http://siri-demo-siri-demo.7e14.starter-us-west-2.openshiftapps.com/siri-lite-cli/index.html
 
 ## siri-lite-cli
 

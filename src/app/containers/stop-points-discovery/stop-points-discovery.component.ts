@@ -72,7 +72,8 @@ export class StopPointsDiscoveryComponent implements OnInit {
         this.bounds = new L.LatLngBounds(new L.LatLng(bounds.getSouth() - dy, bounds.getWest() - dx),
           new L.LatLng(bounds.getNorth() + dy, bounds.getEast() + dx));
 
-        let url = "http://127.0.0.1:8080/siri-lite/stop-points-discovery"
+        // let url = "http://127.0.0.1:8080/siri-lite/stop-points-discovery"
+        let url = "/siri-lite/stop-points-discovery"
           + "?" + StopPointsDiscoveryActions.LoadAction.UPPER_LEFT_LONGITUDE + '=' + this.bounds.getNorthWest().lng
           + "&" + StopPointsDiscoveryActions.LoadAction.UPPER_LEFT_LATITUDE + '=' + this.bounds.getNorthWest().lat
           + "&" + StopPointsDiscoveryActions.LoadAction.LOWER_RIGHT_LONGITUDE + '=' + this.bounds.getSouthEast().lng

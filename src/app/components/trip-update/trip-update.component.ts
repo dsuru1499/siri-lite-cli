@@ -51,7 +51,7 @@ export class TripUpdateComponent implements OnInit {
 
   private load() {
     this.counter++;
-    let url = "http://127.0.0.1:8080/gtfs-rt/trip-update"
+    let url = "/gtfs-rt/trip-update"
       + "?" + TripUpdateActions.LoadAction.STOP_ID + '=' + this.name;
     this.store.dispatch(new TripUpdateActions.LoadAction(this.name, url));
   }
