@@ -10,7 +10,6 @@ import * as StopPointsDiscoveryActions from '../../actions/stop-points-discovery
 import { StopMonitoringComponent } from '../../components/stop-monitoring/stop-monitoring.component';
 import { TripUpdateComponent } from '../../components/trip-update/trip-update.component';
 
-
 declare var document: any;
 
 @Component({
@@ -30,6 +29,8 @@ export class StopPointsDiscoveryComponent implements OnInit {
   private markers: L.LayerGroup;
   private popups: L.LayerGroup;
   private bounds: L.LatLngBounds;
+  private stopPointIcon: L.Icon;
+  private stopAreaIcon: L.Icon;
 
   constructor(
     private application: ApplicationRef,
@@ -43,8 +44,13 @@ export class StopPointsDiscoveryComponent implements OnInit {
 
   ngOnInit() {
 
-    L.Marker.prototype.options.icon = L.icon({
+    this.stopPointIcon = L.icon({
       iconUrl: 'assets/images/marker-icon.png',
+      shadowUrl: 'assets/images/marker-shadow.png'
+    });
+
+    this.stopAreaIcon = L.icon({
+      iconUrl: 'assets/images/marker-red-icon.png',
       shadowUrl: 'assets/images/marker-shadow.png'
     });
 
@@ -64,9 +70,9 @@ export class StopPointsDiscoveryComponent implements OnInit {
 
   private load() {
     if (this.map.getZoom() >= StopPointsDiscoveryComponent.MAX_ZOOM) {
-      let bounds = this.map.getBounds();      
-      let count:number = this.markers.getLayers().length;
-      if ( !this.bounds || !this.bounds.contains(bounds) || count == 0) {
+      let bounds = this.map.getBounds();
+      let count: number = this.markers.getLayers().length;
+      if (!this.bounds || !this.bounds.contains(bounds) || count == 0) {
         let dx: number = this.diff(bounds.getEast(), bounds.getWest());
         let dy: number = this.diff(bounds.getNorth(), bounds.getSouth());
         this.bounds = new L.LatLngBounds(new L.LatLng(bounds.getSouth() - dy, bounds.getWest() - dx),
@@ -101,16 +107,17 @@ export class StopPointsDiscoveryComponent implements OnInit {
         let options = {
           title: i.StopName["0"].value + "\n" + i.StopPointRef,
           alt: i.StopPointRef,
+          icon: i.StopPointRef.startsWith("StopArea") ? this.stopAreaIcon : this.stopPointIcon,
         }
         let marker = L.marker(latlng, options);
         marker.on("click", (e) => {
           this.zone.run(() => {
-            this.createPopup(marker, TripUpdateComponent);
+            this.createPopup(marker, StopMonitoringComponent);
           });
         });
         marker.on("contextmenu", (e) => {
           this.zone.run(() => {
-            this.createPopup(marker, StopMonitoringComponent);
+            this.createPopup(marker, TripUpdateComponent);
           });
         });
         this.markers.addLayer(marker);
@@ -132,7 +139,7 @@ export class StopPointsDiscoveryComponent implements OnInit {
       instance.name = marker.options.alt;
       instance.response$.subscribe(t => Observable.timer(100).subscribe((t) => popup.update()));
 
-      marker.on("popupclose", (e) => {
+      marker.on("popupclose", () => {
         // console.log("popup close");
         marker.unbindPopup();
         component.destroy();

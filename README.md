@@ -3,7 +3,13 @@ Demo OpenShift (Redhat Kubernetes)
 
 http://siri-demo-siri-demo.7e14.starter-us-west-2.openshiftapps.com/siri-cli/index.html
 
+### Siri Lite Cli (version Angular)
 http://siri-demo-siri-demo.7e14.starter-us-west-2.openshiftapps.com/siri-lite-cli/index.html
+
+### Siri Lite Cli (version Vuejs)
+http://siri-demo-siri-demo.7e14.starter-us-west-2.openshiftapps.com/siri-lite-vue/index.html
+
+### Siri Lite Cli (version Reactjs)
 
 ## siri-lite-cli
 
@@ -16,8 +22,8 @@ Build : ng build
 **siri-lite-cli** est un client permettant l’interrogation des services StopPointsDiscovery et StopMonitoring d' un serveur SIRI-LITE et TripUpdate d'un serveur GTFS-RT. 
 
 * Les points d’arrêts sont affichés sur un fond cartographique OSM (StopPointsDiscovery).
-* Un clic droit sur un point d’arrêt permet d'afficher le résultat d'une requête SIRI LITE StopMonitoring.
-* Un clic gauche sur un point d’arrêt permet d'afficher le résultat d'une requete GTFS RT  TripUtdate.
+* Un clic gauche sur un point d’arrêt permet d'afficher le résultat d'une requête SIRI LITE StopMonitoring.
+* Un clic droit sur un point d’arrêt permet d'afficher le résultat d'une requete GTFS RT  TripUtdate.
 * Les vues StopMonitoring et TripUtdate sont actualisées périodiquement.
 
 
