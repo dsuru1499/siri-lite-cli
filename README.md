@@ -10,6 +10,9 @@ http://siri-demo-siri-demo.7e14.starter-us-west-2.openshiftapps.com/siri-lite-cl
 http://siri-demo-siri-demo.7e14.starter-us-west-2.openshiftapps.com/siri-lite-vue/index.html
 
 ### Siri Lite Cli (version Reactjs)
+http://siri-demo-siri-demo.7e14.starter-us-west-2.openshiftapps.com/siri-lite-react/index.html
+
+### Siri Lite Cli (version Reactjs)
 
 ## siri-lite-cli
 
