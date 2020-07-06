@@ -33,7 +33,7 @@ Build : ng build
 
 
 ### Principes
-**siri-cli** est une application ANGULAR 4 écrite en typescript mettant en œuvre Leaflet et le pattern Flux/Redux.  
+**siri-cli** est une application ANGULAR écrite en typescript mettant en œuvre Leaflet et le pattern Flux/Redux.  
 Les popups Leaflet affiche un formulaire ANGULAR.
 
 Ex: StopMonitoring  
