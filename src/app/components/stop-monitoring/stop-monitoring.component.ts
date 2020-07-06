@@ -16,8 +16,8 @@ import { filter, map, take } from 'rxjs/operators';
 })
 export class StopMonitoringComponent implements OnInit {
 
-  public static KEY = ' W0RTVV0gMTcvMTAvMTcgQ2l0eXdheSBhc3NvY2lhdGlvbiBkZSBtw6lkaW9jcmVzCg==';  
-  
+  public static KEY = ' W0RTVV0gMTcvMTAvMTcgQ2l0eXdheSBhc3NvY2lhdGlvbiBkZSBtw6lkaW9jcmVzCg==';
+
   public model: any = {};
   private responseSubscription: Subscription;
   private timerSubscription: Subscription;
@@ -52,17 +52,14 @@ export class StopMonitoringComponent implements OnInit {
       reducers.smResponse(this.name)).pipe(
         filter(t => t !== undefined),
         map(t => this.update(t)
-      ));
+        ));
     this.responseSubscription = this.response$.subscribe(t => this.model = t);
     this.timerSubscription = timer(0, 10 * 1000).subscribe((t) => this.load());
   }
 
   private load() {
     this.counter++;
-    let url ="";
-    if(isDevMode){
-      url += "http://127.0.0.1:8080";
-    }
+    let url = (isDevMode) ? "http://127.0.0.1:8080" : "";
     url += "/siri-lite/stop-monitoring"
       + "?" + StopMonitoringActions.LoadAction.MONITORING_REF + '=' + this.name
       + "&" + StopMonitoringActions.LoadAction.MAXIMUM_STOP_VISITS + '=' + 10;
@@ -73,7 +70,7 @@ export class StopMonitoringComponent implements OnInit {
     let result = Object.assign({}, { 'id': this.name }, { 'values': [] });
     let values = [];
     if (message.Siri.StopMonitoringDelivery.MonitoredStopVisit) {
-     from(message.Siri.StopMonitoringDelivery.MonitoredStopVisit).pipe(take(10))
+      from(message.Siri.StopMonitoringDelivery.MonitoredStopVisit).pipe(take(10))
         .subscribe((value) => result.values.push(value));
     }
 

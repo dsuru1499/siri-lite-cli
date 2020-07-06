@@ -74,16 +74,14 @@ export class StopPointsDiscoveryComponent implements OnInit {
     if (this.map.getZoom() >= StopPointsDiscoveryComponent.MAX_ZOOM) {
       let bounds = this.map.getBounds();
       let count: number = this.markers.getLayers().length;
-      if (!this.bounds || !this.bounds.contains(bounds) || count == 0) {
-        let dx: number = this.diff(bounds.getEast(), bounds.getWest());
-        let dy: number = this.diff(bounds.getNorth(), bounds.getSouth());
-        this.bounds = new L.LatLngBounds(new L.LatLng(bounds.getSouth() - dy, bounds.getWest() - dx),
+      if (!this.bounds || !this.bounds.contains(bounds) || count === 0) {
+        const dx: number = this.diff(bounds.getEast(), bounds.getWest());
+        const dy: number = this.diff(bounds.getNorth(), bounds.getSouth());
+        this.bounds = new L.LatLngBounds(
+          new L.LatLng(bounds.getSouth() - dy, bounds.getWest() - dx),
           new L.LatLng(bounds.getNorth() + dy, bounds.getEast() + dx));
 
-        let url = "";
-        if(isDevMode){
-          url += "http://127.0.0.1:8080";
-        }
+        let url = (isDevMode) ? "http://127.0.0.1:8080" : "";
         url += "/siri-lite/stop-points-discovery"
           + "?" + StopPointsDiscoveryActions.LoadAction.UPPER_LEFT_LONGITUDE + '=' + this.bounds.getNorthWest().lng
           + "&" + StopPointsDiscoveryActions.LoadAction.UPPER_LEFT_LATITUDE + '=' + this.bounds.getNorthWest().lat

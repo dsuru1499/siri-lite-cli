@@ -55,10 +55,7 @@ export class TripUpdateComponent implements OnInit {
 
   private load() {
     this.counter++;
-    let url ="";
-    if(isDevMode){
-      url += "http://127.0.0.1:8080";
-    }
+    let url = (isDevMode) ? "http://127.0.0.1:8080" : "";
     url += "/gtfs-rt/trip-update"
       + "?" + TripUpdateActions.LoadAction.STOP_ID + '=' + this.name;
     this.store.dispatch(new TripUpdateActions.LoadAction(this.name, url));
@@ -68,16 +65,16 @@ export class TripUpdateComponent implements OnInit {
     let result = Object.assign({}, { 'id': this.name }, { 'values': [] });
     let values = [];
     from(message.entity).pipe(
-      take(10), 
+      take(10),
       map(entity => {
-      let index = parseInt(entity.id.substring(entity.id.lastIndexOf(":") + 1));
-      return Object.assign({}, {
-        trip: entity.tripUpdate.trip,
-        vehicle: entity.tripUpdate.vehicle,
-        stopTimeUpdate: entity.tripUpdate.stopTimeUpdate.find((t) => (t.stopSequence == index)),
-        timestamp: entity.tripUpdate.timestamp
-      });
-    })).subscribe((value) => result.values.push(value));
+        let index = parseInt(entity.id.substring(entity.id.lastIndexOf(":") + 1));
+        return Object.assign({}, {
+          trip: entity.tripUpdate.trip,
+          vehicle: entity.tripUpdate.vehicle,
+          stopTimeUpdate: entity.tripUpdate.stopTimeUpdate.find((t) => (t.stopSequence == index)),
+          timestamp: entity.tripUpdate.timestamp
+        });
+      })).subscribe((value) => result.values.push(value));
 
     //console.log(result);
     return result;
