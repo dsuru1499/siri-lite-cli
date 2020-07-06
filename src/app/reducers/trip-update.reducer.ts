@@ -9,14 +9,15 @@ export function reducer(state = initialState, action: Actions): State {
     switch (action.type) {
 
         case ActionTypes.LOAD_SUCCESS: {
-            let array = [];
+            const array = [];
             array[action.name] = action.payload;
             return Object.assign({}, state, array);
         }
 
         case ActionTypes.LOAD_FAILURE: {
-            delete state[action.name];
-            return Object.assign({}, state);
+            const result = Object.assign({}, state);
+            delete result[action.name];
+            return result;
         }
 
         default: {

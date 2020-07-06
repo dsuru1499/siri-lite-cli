@@ -1,26 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response, ResponseContentType } from '@angular/http';
-import { Observable } from "rxjs/Rx"
-import * as $protobuf from "protobufjs";
-import * as Gtfs from "./gtfs-realtime";
+import { HttpClientModule, HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs'
+import * as $protobuf from 'protobufjs';
+import * as Gtfs from './gtfs-realtime';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class TripUpdateService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  public get(url: string): Observable<Response> {
+  public get(url: string): Observable<Object> {
 
-    let headers = new Headers({
+    const headers = new HttpHeaders({
       'Accept': 'application/octet-stream'
     });
 
-    return this.http.get(url, { headers: headers, responseType: ResponseContentType.ArrayBuffer })
-      .map(response => {
-        let buffer = new Uint8Array(response.arrayBuffer());
-        return Gtfs.transit_realtime.FeedMessage.decode(buffer);
-      })
-      .catch(this.onError);
+    return this.http.get(url, { headers: headers, responseType: 'arraybuffer' }).pipe(
+        map(response => {
+          const buffer = new Uint8Array(response);
+          return Gtfs.transit_realtime.FeedMessage.decode(buffer);
+        }),
+        catchError(this.onError)
+      );
   }
 
   protected onError(error: any) {

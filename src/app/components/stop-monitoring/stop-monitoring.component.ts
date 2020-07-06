@@ -1,10 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs/Rx';
+import { Component, OnInit, OnDestroy, isDevMode } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as reducers from '../../reducers';
 import * as StopMonitoringActions from '../../actions/stop-monitoring.actions';
-import * as Gtfs from "../../services/gtfs-realtime";
+import * as Gtfs from '../../services/gtfs-realtime';
 import { createSelector } from 'reselect';
+import { from, timer } from 'rxjs';
+import { filter, map, take } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-stop-monitoring',
@@ -15,10 +18,10 @@ export class StopMonitoringComponent implements OnInit {
 
   public static KEY = ' W0RTVV0gMTcvMTAvMTcgQ2l0eXdheSBhc3NvY2lhdGlvbiBkZSBtw6lkaW9jcmVzCg==';  
   
-  private model: any = {};
+  public model: any = {};
   private responseSubscription: Subscription;
   private timerSubscription: Subscription;
-  private counter: number = 0;
+  public counter: number = 0;
 
   private _response$: Observable<any>;
   public get response$(): Observable<any> { return this._response$; }
@@ -45,14 +48,22 @@ export class StopMonitoringComponent implements OnInit {
   }
 
   protected initialize() {
-    this.response$ = this.store.select(reducers.smResponse(this.name)).filter(t => t !== undefined).map(t => this.update(t));
+    this.response$ = this.store.select(
+      reducers.smResponse(this.name)).pipe(
+        filter(t => t !== undefined),
+        map(t => this.update(t)
+      ));
     this.responseSubscription = this.response$.subscribe(t => this.model = t);
-    this.timerSubscription = Observable.timer(0, 10 * 1000).subscribe((t) => this.load());
+    this.timerSubscription = timer(0, 10 * 1000).subscribe((t) => this.load());
   }
 
   private load() {
     this.counter++;
-    let url = "/siri-lite/stop-monitoring"
+    let url ="";
+    if(isDevMode){
+      url += "http://127.0.0.1:8080";
+    }
+    url += "/siri-lite/stop-monitoring"
       + "?" + StopMonitoringActions.LoadAction.MONITORING_REF + '=' + this.name
       + "&" + StopMonitoringActions.LoadAction.MAXIMUM_STOP_VISITS + '=' + 10;
     this.store.dispatch(new StopMonitoringActions.LoadAction(this.name, url));
@@ -62,7 +73,7 @@ export class StopMonitoringComponent implements OnInit {
     let result = Object.assign({}, { 'id': this.name }, { 'values': [] });
     let values = [];
     if (message.Siri.StopMonitoringDelivery.MonitoredStopVisit) {
-      Observable.from(message.Siri.StopMonitoringDelivery.MonitoredStopVisit).take(10)
+     from(message.Siri.StopMonitoringDelivery.MonitoredStopVisit).pipe(take(10))
         .subscribe((value) => result.values.push(value));
     }
 

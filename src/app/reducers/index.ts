@@ -1,5 +1,4 @@
 import { ActionReducer, combineReducers } from '@ngrx/store';
-import { compose } from '@ngrx/core/compose';
 import { createSelector } from 'reselect';
 
 import * as StopPointsDiscovery from './stop-points-discovery.reducer';

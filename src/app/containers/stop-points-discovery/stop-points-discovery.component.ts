@@ -1,14 +1,16 @@
 import {
   Component, OnInit,
-  ApplicationRef, ComponentFactoryResolver, ComponentFactory, ComponentRef, Injector, NgZone
+  ApplicationRef, ComponentFactoryResolver, ComponentFactory, ComponentRef, Injector, NgZone, isDevMode
 } from '@angular/core';
 import * as L from 'leaflet';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as reducers from '../../reducers';
 import * as StopPointsDiscoveryActions from '../../actions/stop-points-discovery.actions';
 import { StopMonitoringComponent } from '../../components/stop-monitoring/stop-monitoring.component';
 import { TripUpdateComponent } from '../../components/trip-update/trip-update.component';
+import { from, timer } from 'rxjs';
+import { filter, map, take } from 'rxjs/operators';
 
 declare var document: any;
 
@@ -63,7 +65,7 @@ export class StopPointsDiscoveryComponent implements OnInit {
     this.popups = L.layerGroup([]).addTo(this.map);
     L.control.scale().addTo(this.map);
 
-    this.response$.filter(t => t !== undefined).subscribe(t => this.update(t));
+    this.response$.pipe(filter(t => t !== undefined)).subscribe(t => this.update(t));
     this.map.on("moveend", this.load, this);
     this.load();
   }
@@ -78,8 +80,11 @@ export class StopPointsDiscoveryComponent implements OnInit {
         this.bounds = new L.LatLngBounds(new L.LatLng(bounds.getSouth() - dy, bounds.getWest() - dx),
           new L.LatLng(bounds.getNorth() + dy, bounds.getEast() + dx));
 
-        // let url = "http://127.0.0.1:8080/siri-lite/stop-points-discovery"
-        let url = "/siri-lite/stop-points-discovery"
+        let url = "";
+        if(isDevMode){
+          url += "http://127.0.0.1:8080";
+        }
+        url += "/siri-lite/stop-points-discovery"
           + "?" + StopPointsDiscoveryActions.LoadAction.UPPER_LEFT_LONGITUDE + '=' + this.bounds.getNorthWest().lng
           + "&" + StopPointsDiscoveryActions.LoadAction.UPPER_LEFT_LATITUDE + '=' + this.bounds.getNorthWest().lat
           + "&" + StopPointsDiscoveryActions.LoadAction.LOWER_RIGHT_LONGITUDE + '=' + this.bounds.getSouthEast().lng
@@ -137,7 +142,7 @@ export class StopPointsDiscoveryComponent implements OnInit {
       let component = this.createComponent(view);
       let instance = component.instance;
       instance.name = marker.options.alt;
-      instance.response$.subscribe(t => Observable.timer(100).subscribe((t) => popup.update()));
+      instance.response$.subscribe(t => timer(100).subscribe((t) => popup.update()));
 
       marker.on("popupclose", () => {
         // console.log("popup close");

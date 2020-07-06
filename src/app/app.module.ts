@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 // import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 import { AppComponent } from './app.component';
@@ -35,7 +35,7 @@ import { TripUpdateComponent } from './components/trip-update/trip-update.compon
     EffectsModule.forRoot([StopPointsDiscoveryEffects, TripUpdateEffects,StopMonitoringEffects ]),
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpClientModule
   ],
 
   entryComponents: [AppComponent, StopPointsDiscoveryComponent, StopMonitoringComponent, TripUpdateComponent],
