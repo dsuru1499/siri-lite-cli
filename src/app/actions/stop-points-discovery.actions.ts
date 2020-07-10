@@ -9,10 +9,10 @@ export const ActionTypes = {
 
 export class LoadAction implements Action {
 
-    public static UPPER_LEFT_LONGITUDE = "BoundingBox.UpperLeft.Longitude";
-    public static UPPER_LEFT_LATITUDE = "BoundingBox.UpperLeft.Latitude";
-    public static LOWER_RIGHT_LONGITUDE = "BoundingBox.LowerRight.Longitude";
-    public static LOWER_RIGHT_LATITUDE = "BoundingBox.LowerRight.Latitude";
+    public static UPPER_LEFT_LONGITUDE = 'BoundingBox.UpperLeft.Longitude';
+    public static UPPER_LEFT_LATITUDE = 'BoundingBox.UpperLeft.Latitude';
+    public static LOWER_RIGHT_LONGITUDE = 'BoundingBox.LowerRight.Longitude';
+    public static LOWER_RIGHT_LATITUDE = 'BoundingBox.LowerRight.Latitude';
 
     type = ActionTypes.LOAD;
 

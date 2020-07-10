@@ -8,8 +8,8 @@ export const ActionTypes = {
 
 export class LoadAction implements Action {
 
-    public static MONITORING_REF = "MonitoringRef";
-    public static MAXIMUM_STOP_VISITS = "MaximumStopVisits";
+    public static MONITORING_REF = 'MonitoringRef';
+    public static MAXIMUM_STOP_VISITS = 'MaximumStopVisits';
 
     type = ActionTypes.LOAD;
 

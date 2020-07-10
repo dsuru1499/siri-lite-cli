@@ -1,6 +1,6 @@
 import { ActionTypes, Actions } from '../actions/stop-monitoring.actions';
 
-export interface State { };
+export interface State {};
 
 export const initialState: State = {};
 

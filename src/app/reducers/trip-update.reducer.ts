@@ -1,6 +1,6 @@
 import { ActionTypes, Actions } from '../actions/trip-update.actions';
 
-export interface State { };
+export interface State {};
 
 export const initialState: State = {};
 

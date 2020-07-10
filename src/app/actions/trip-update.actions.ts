@@ -8,8 +8,8 @@ export const ActionTypes = {
 
 export class LoadAction implements Action {
 
-    public static STOP_ID = "stop_id";
-    public static ROUTE_ID = "route_id";
+    public static STOP_ID = 'stop_id';
+    public static ROUTE_ID = 'route_id';
 
     type = ActionTypes.LOAD;
 

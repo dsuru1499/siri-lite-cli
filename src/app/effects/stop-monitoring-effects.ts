@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Store, Action } from '@ngrx/store';
 import { Observable, of, empty } from 'rxjs';
-import { debounceTime, switchMap, skip , map, takeUntil, catchError } from 'rxjs/operators';
+import { debounceTime, switchMap, skip, map, takeUntil, catchError } from 'rxjs/operators';
 
 
 import * as sm from '../actions/stop-monitoring.actions';
@@ -12,9 +12,7 @@ import * as model from '../reducers';
 @Injectable()
 export class StopMonitoringEffects {
 
-    constructor(private actions$: Actions, private service: StopMonitoringService) { }
-
-    @Effect() load$: Observable<any> = this.actions$.pipe(
+    @Effect() load$: Observable<Action> = this.actions$.pipe(
         ofType(sm.ActionTypes.LOAD),
         debounceTime(300),
         switchMap((action: sm.LoadAction) => {
@@ -22,14 +20,13 @@ export class StopMonitoringEffects {
                 return empty();
             }
 
-            const next$ = this.actions$.pipe(
-                ofType(sm.ActionTypes.LOAD),
-                skip(1)
-            );
+            const next$ = this.actions$.pipe(ofType(sm.ActionTypes.LOAD), skip(1));
             return this.service.get(action.payload).pipe(
-                takeUntil(next$),                
+                takeUntil(next$),
                 map(result => new sm.LoadSuccessAction(action.name, result)),
                 catchError(error => of(new sm.LoadFailureAction(action.name, error)))
             );
         }));
+
+    constructor(private actions$: Actions, private service: StopMonitoringService) { }
 }
