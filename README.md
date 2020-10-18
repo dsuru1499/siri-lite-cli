@@ -1,20 +1,22 @@
 ## Demo
-Demo OpenShift (Redhat Kubernetes) 
+Demo Heroku
+Heroku arrête le serveur apres 30 mn d'inactivité.
+Initialisation du modèle en memoire 1 mn.
 
 ### Siri Cli (version Reactjs)
-http://siri-demo-siri-demo.apps.us-east-1.starter.openshift-online.com/siri-react/index.html
+https://siri-demo-heroku.herokuapp.com//siri-react/index.html
 
 ### Siri Cli (version Angular)
-http://siri-demo-siri-demo.apps.us-east-1.starter.openshift-online.com/siri-cli/index.html
+https://siri-demo-heroku.herokuapp.com//siri-cli/index.html
 
 ### Siri Lite Cli (version Angular)
-http://siri-demo-siri-demo.apps.us-east-1.starter.openshift-online.com/siri-lite-cli/index.html
+https://siri-demo-heroku.herokuapp.com//siri-lite-cli/index.html
 
 ### Siri Lite Cli (version Vuejs)
-http://siri-demo-siri-demo.apps.us-east-1.starter.openshift-online.com/siri-lite-vue/index.html
+https://siri-demo-heroku.herokuapp.com//siri-lite-vue/index.html
 
 ### Siri Lite Cli (version Reactjs)
-http://siri-demo-siri-demo.apps.us-east-1.starter.openshift-online.com/siri-lite-react/index.html
+https://siri-demo-heroku.herokuapp.com//siri-lite-react/index.html
 
 ## siri-lite-cli
 
